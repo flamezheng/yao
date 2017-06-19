@@ -5,19 +5,10 @@
     <title></title>
 
 </head>
-<body ng-app="noteApp" ng-controller="NoteCtrl">
-<h2>我的笔记</h2>
-<textarea cols="40" rows="20"ng-model="content"></textarea>
-<p>
-    <button ng-click="save()">保存</button>
-    <button ng-click = "clear()">清除 </button>
-    <button ng-click = "read()" >读取 </button>
-</p>
-<p>剩余：{[getRestCount()]}</p>
+<body ng-app="yaoApp">
+    <p>
+        <input type="file" id="file_input" />
+    </p>
 
-<script type="text/javascript" src="/static/lib/angular-1.5.5/angular.js"></script>
-<script type="text/javascript" src="/static/js/app.js">
-
-</script>
 </body>
 </html>
