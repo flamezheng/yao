@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>尚硅谷HTML5 初级阶段</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport">
+    <style type="text/css">
+        .box {
+
+        }
+    </style>
+</head>
+<body>
+
+    <input type="file" name="file" id="file">+
+    <img  alt="" id="img01">
+
+<script type="text/javascript">
+
+    var img01Dom = document.querySelector("#img01");
+
+
+    var fileDom = document.querySelector("#file");
+    fileDom.onchange = function (ev) {
+
+        //console.log(fileDom.value);
+
+        //1.获取文件的对象
+        console.log(ev);
+
+        var files = ev.target.files;
+        var fileObj = files[0];
+
+        console.log(fileObj);
+//        console.log(files);
+
+        //2.加载解析文件的对象
+
+        var fileReader = new FileReader();
+
+//        加载，解析文件 -- 产生一个分线程 readAsDataURL --- 处理图片文件
+        fileReader.readAsDataURL(fileObj);
+//        加载解析完毕
+        fileReader.onload = function () {
+
+//            解析后的文件内容
+            //fileReader.result;
+
+            //3.显示文件
+            img01Dom.src = fileReader.result;
+
+
+
+        }
+
+
+    }
+
+
+</script>
+</body>
+</html>
