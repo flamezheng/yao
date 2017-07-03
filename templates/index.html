@@ -1,16 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Image preview example</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta content="telephone=no" name="format-detection" />
+ <script type="text/javascript" src="/static/lib/jQuery/jquery.min.js"></script>
+  <title>姚基金与你同在</title>
+  <link rel="stylesheet" href="/static/css/reset.css">
+  <style type="text/css">
+    html,body{
+      width:100%;
+      height:100%;
+      max-width: 1024px;
+      max-height: 1366px;
+    }
+    #wrapper{
+      position: relative;
+      width:100%;
+      height:100%;
+      background-image: url("/static/image/home_page.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    form{
+      width:100%;
+      height:100%;
+    }
+    .input_name{
+      width:85.15%;
+      height:6.15%;
+      background-image: url("/static/image/input.png");
+      background-repeat: no-repeat;
+      background-size: 100% 95%;
+      position: absolute;
+      left:6.875%;
+      top:58.13%;
+      font-size: 16px;
+      color: #EB6100;
+      text-indent: 20%;
+      outline: none;
+    }
+    @media (min-width:415px ) and (max-width:767px){
+      .input_name{
+        font-size: 20px;
+      }
+    }
+    @media (min-width:768px ){
+      .input_name{
+        font-size: 26px;
+      }
+    }
+    .input_name::-webkit-input-placeholder{
+      color: #EB6100;
+    }
+    .input_name:-moz-placeholder{
+      color: #EB6100;
+    }
+    .input_name:-ms-input-placeholder{
+      color: #EB6100;
+    }
+
+    .one_key{
+      position: absolute;
+      left:29.31%;
+      bottom:9.52%;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      width: 41%;
+      height:10.5%;
+      background-image: url("/static/image/one_key.png");
+      background-repeat: no-repeat;
+      background-size: 107% 100%;
+      background-color: transparent;
+      outline: none;
+      font-size: 0;
+    }
+    .upload{
+      position: absolute;
+      left:61%;
+      top:8.2%;
+      width:28.75%;
+      height: 14.286%;
+      background-image: url(/static/image/upload.png);
+      background-size: 100% 100%;
+    }
+
+    #file{
+      position: absolute;
+      left: 61%;
+      top: 8.2%;
+      z-index: 100;
+      font-size: 0;
+      width: 28.75%;
+      height: 14.286%;
+      opacity: 0;
+    }
+
+    #image01{
+      position: absolute;
+      left: 63%;
+      top: 27.8%;
+      width:9.333%;
+      height:6.1%;
+      border-radius: 42% 42% 100% 100%;
+    }
+    #show_name{
+      width:100px;
+      height:100px;
+      background-color: #EB6100;
+    }
+
+  </style>
+</head>
 <body>
-<form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" name="uploadForm">
-    <form>
-        <input type="file"/>
-        <p><input type="submit" value="Send"></p>
+  <div id="wrapper">
+    <form action="" method=post enctype=multipart/form-data >
+      <div id="upload" class="upload"></div>
+      <input type="file"  id="file" name="file">
+      <br>
+      <input type="submit" id="one_key"  class="one_key">
     </form>
 
-</form>
+      <input type="text" id="input_name" class="input_name" placeholder="输入你的姓名">
 
+      <image id="image01" src="" alt="">
+      <div id="show_name">
+
+      </div>
+  </div>
 </body>
 </html>
