@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, url_for
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'PNG', 'JPG', 'JPEG'])
 app.config['UPLOAD_FOLDER'] = os.getcwd()
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
@@ -24,9 +24,14 @@ def change_avatar():
         print(file)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+            print(os.path.join(app.config['UPLOAD_FOLDER']))
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            my_url = filename = getParams(file)
-            return render_template('final.html', url="/static/image/" + my_url)
+            resizeImg(ori_img=filename, dst_img=filename)
+            my_url = getParams(file)
+            if my_url:
+                return render_template('final.html', url="/static/image/" + my_url)
+            else:
+               return render_template('index_alert.html', msg='请传入正确的照片');
         else:
             print("文件格式不正确");
             return "出错啦"
@@ -40,6 +45,9 @@ def getParams(file):
             }
     files = {'image_file': open(file.filename, 'rb')}
     r = requests.post("https://api-cn.faceplusplus.com/facepp/v3/detect", body, files=files, timeout=8);
+    print(r.text)
+    if len(r.json()['faces']) < 1:
+        return False
     rectangle_ = r.json()['faces'][0]['face_rectangle']
     print(rectangle_['top']);
     print(rectangle_['width']);
@@ -64,11 +72,24 @@ def getParams(file):
             newData.append(item)
     img.putdata(newData)
     pic_id = uuid.uuid4().__str__()
-    img.save(os.path.join(app.config['UPLOAD_FOLDER'])+"/static/image/"+ pic_id+ ".png", "PNG")
+    img.save(os.path.join(app.config['UPLOAD_FOLDER']) + "/static/image/" + pic_id + ".png", "PNG")
     return pic_id + '.png'
 
     # return render_template('final.html')
 
 
+def resizeImg(**args):
+    args_key = {'ori_img': '', 'dst_img': '', 'dst_w': '', 'dst_h': '', 'save_q': 75}
+    arg = {}
+    for key in args_key:
+        if key in args:
+            arg[key] = args[key]
+
+    im = Image.open(arg['ori_img'])
+    ori_w, ori_h = im.size
+
+    im.resize((ori_w, ori_h), Image.ANTIALIAS).save(arg['dst_img'], quality=75)
+
+
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
