@@ -21,7 +21,7 @@
       z-index: 10000;
       width:100%;
       height:100%;
-      background-image: url("/static/image/final.png");
+      background-image: url("/static/image/WechatIMG888.png");
       background-size: 100% 100%;
       background-repeat: no-repeat;
     }
@@ -89,13 +89,13 @@
       <div id="name">郑天吉</div>
   </div>
   <div id="show_ava">
-    <img id="img01" src="/static/image/avatar_1501384845236.png" alt="">
+    <img id="img01" src={{ url }} alt="">
   </div>
 <script type="text/javascript">
     document.getElementById('back').addEventListener('click',function(){
       window.history.go(-1)
     })
-    document.getElementById('#name').innerHTML = '郑天吉'   //后台返回姓名
+    document.getElementById('#name').innerHTML = {{ name }}   //后台返回姓名
 
 </script>
 </body>

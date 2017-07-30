@@ -1,174 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta content="telephone=no" name="format-detection" />
-  <title>姚基金与你同在</title>
-  <link rel="stylesheet" href="/static/css/reset.css">
-  <style type="text/css">
-    html,body{
-      width:100%;
-      height:100%;
-      max-width: 1024px;
-      max-height: 1366px;
-    }
-    #wrapper{
-      position: relative;
-      width:100%;
-      height:100%;
-      background-image: url("/static/image/home_page.png");
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-    }
-    form{
-      width:100%;
-      height:100%;
-    }
-    .input_name{
-      width:85.15%;
-      height:6.15%;
-      background-image: url("/static/image/input.png");
-      background-repeat: no-repeat;
-      background-size: 100% 95%;
-      position: absolute;
-      left:6.875%;
-      top:58.13%;
-      font-size: 16px;
-      color: #EB6100;
-      text-indent: 20%;
-      outline: none;
-    }
-    @media (max-width: 414px){
-      #show_name{
-        line-height: 1%;
-      }
-    }
-    @media (min-width:415px ) and (max-width:767px){
-      .input_name{
-        font-size: 20px;
-      }
-    }
-    @media (min-width:768px ){
-      .input_name{
-        font-size: 26px;
-      }
-    }
-    .input_name::-webkit-input-placeholder{
-      color: #EB6100;
-    }
-    .input_name:-moz-placeholder{
-      color: #EB6100;
-    }
-    .input_name:-ms-input-placeholder{
-      color: #EB6100;
-    }
-    
-    .one_key{
-      position: absolute;
-      left:29.31%;
-      bottom:9.52%;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      border: none;
-      width: 41%;
-      height:10.5%;
-      background-image: url("/static/image/one_key.png");
-      background-repeat: no-repeat;
-      background-size: 107% 100%;
-      background-color: transparent;
-      outline: none;
-      font-size: 0;
-    }
-    .upload{
-      position: absolute;
-      left:61%;
-      top:8.2%;
-      width:28.75%;
-      height: 14.286%;
-      background-image: url(/static/image/upload.png);
-      background-size: 100% 100%;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <title>姚基金与你同在</title>
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            max-width: 1024px;
+            max-height: 1366px;
+        }
 
-    #file{
-      position: absolute;
-      left: 61%;
-      top: 8.2%;
-      z-index: 100;
-      font-size: 0;
-      width: 28.75%;
-      height: 14.286%;
-      opacity: 0;
-    }
+        #wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url("/static/image/home_page.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        form {
+            width: 100%;
+            height: 100%;
+        }
+
+        .input_name {
+            width: 85.15%;
+            height: 6.15%;
+            background-image: url("/static/image/input.png");
+            background-repeat: no-repeat;
+            background-size: 100% 95%;
+            position: absolute;
+            left: 6.875%;
+            top: 58.13%;
+            font-size: 16px;
+            color: #EB6100;
+            text-indent: 20%;
+            outline: none;
+        }
+
+        @media (max-width: 414px) {
+            #show_name {
+                line-height: 1%;
+            }
+        }
+
+        @media (min-width: 415px ) and (max-width: 767px) {
+            .input_name {
+                font-size: 20px;
+            }
+        }
+
+        @media (min-width: 768px ) {
+            .input_name {
+                font-size: 26px;
+            }
+        }
+
+        .input_name::-webkit-input-placeholder {
+            color: #EB6100;
+        }
+
+        .input_name:-moz-placeholder {
+            color: #EB6100;
+        }
+
+        .input_name:-ms-input-placeholder {
+            color: #EB6100;
+        }
+
+        .one_key {
+            position: absolute;
+            left: 29.31%;
+            bottom: 9.52%;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: none;
+            width: 41%;
+            height: 10.5%;
+            background-image: url("/static/image/one_key.png");
+            background-repeat: no-repeat;
+            background-size: 107% 100%;
+            background-color: transparent;
+            outline: none;
+            font-size: 0;
+        }
+
+        .upload {
+            position: absolute;
+            left: 61%;
+            top: 8.2%;
+            width: 28.75%;
+            height: 14.286%;
+            background-image: url(/static/image/upload.png);
+            background-size: 100% 100%;
+        }
+
+        #file {
+            position: absolute;
+            left: 61%;
+            top: 8.2%;
+            z-index: 100;
+            font-size: 0;
+            width: 28.75%;
+            height: 14.286%;
+            opacity: 0;
+        }
+
+        #show_name {
+            height: 2.308%;
+            max-width: 25.6%;
+            font-size: 8px;
+            position: absolute;
+            left: 37.8%;
+            top: 43.5%;
+        }
 
 
-    #show_name{
-      height:2.308%;
-      max-width: 25.6%;
-      font-size: 8px;
-      position: absolute;
-      left:37.8%;
-      top:43.5%;
-    }
-
-
-  </style>
+    </style>
 </head>
 <body>
-  <div id="wrapper">
-    <form action="/"    method="POST"    enctype="multipart/form-data" >
-      <div id="upload" class="upload"></div>
-      <input type="file"  id="file" name="file">
-      <input type="submit"  disabled="true" id="one_key_submit"  class="one_key">
+<div id="wrapper">
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <div id="upload" class="upload"></div>
+        <input type="file" id="file" name="file">
+        <input type="submit" disabled="true" id="one_key_submit" class="one_key">
+        <input type="text" id="input_name" name="name" class="input_name" maxlength="7" placeholder="输入你的姓名">
     </form>
-      <input type="text" id="input_name" class="input_name" maxlength="7" placeholder="输入你的姓名">
-      <div id="show_name"></div>
- </div>
+    <div id="show_name"></div>
+</div>
 
 <script type="text/javascript">
 
-  var img01Dom = document.querySelector("#img01");
+    var img01Dom = document.querySelector("#img01");
 
-  var fileDom = document.querySelector("#file");
-  fileDom.onchange = function (ev) {
-  //1.获取文件的对象
-  console.log(ev);
-  var files = ev.target.files;
-  var fileObj = files[0];
+    var fileDom = document.querySelector("#file");
+    fileDom.onchange = function (ev) {
+        //1.获取文件的对象
+        console.log(ev);
+        var files = ev.target.files;
+        var fileObj = files[0];
 
-  //2.加载解析文件的对象
+        //2.加载解析文件的对象
 
-  var fileReader = new FileReader();
-  //        加载，解析文件 -- 产生一个分线程 readAsDataURL --- 处理图片文件
-  fileReader.readAsDataURL(fileObj);
-  //        加载解析完毕
-  fileReader.onload = function () {
-  //            解析后的文件内容
-  //fileReader.result;
-  //3.显示文件
+        var fileReader = new FileReader();
+        //        加载，解析文件 -- 产生一个分线程 readAsDataURL --- 处理图片文件
+        fileReader.readAsDataURL(fileObj);
+        //        加载解析完毕
+        fileReader.onload = function () {
+            //            解析后的文件内容
+            //fileReader.result;
+            //3.显示文件
 //  img01Dom.src = fileReader.result;
 
-  document.getElementById('one_key_submit').disabled = false
+            document.getElementById('one_key_submit').disabled = false
 
-  }
-  }
-
-  var inputDom = document.getElementById('input_name')
-  var showDom = document.getElementById('show_name')
-      inputDom.addEventListener('input',function(){
-        showDom.innerHTML = inputDom.value
-      })
-
-  document.getElementById('one_key_submit').addEventListener('click',function () {
-    if(this.disabled == true){
-      alert('请上传照片')
+        }
     }
-  })
+
+    var inputDom = document.getElementById('input_name')
+    var showDom = document.getElementById('show_name')
+    inputDom.addEventListener('input', function () {
+        showDom.innerHTML = inputDom.value
+    })
+
+    document.getElementById('one_key_submit').addEventListener('click', function () {
+        if (this.disabled == true) {
+            alert('请上传照片')
+        }
+    })
 
 </script>
 
- </body>
+</body>
 </html>

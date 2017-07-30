@@ -8,9 +8,9 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'PNG', 'JPG', 'JPEG'])
-app.config['UPLOAD_FOLDER'] = os.getcwd()
+app.config['UPLOAD_FOLDER'] =  os.path.split(os.path.realpath(__file__))[0]
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-
+app.config['name'] = ''
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -21,15 +21,16 @@ def allowed_file(filename):
 def change_avatar():
     if request.method == 'POST':
         file = request.files['file']
+        app.config['name'] = request.form['name']
         print(file)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             print(os.path.join(app.config['UPLOAD_FOLDER']))
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            resizeImg(ori_img=filename, dst_img=filename)
+            resizeImg(ori_img=os.path.join(app.config['UPLOAD_FOLDER'])+"/"+filename, dst_img=filename)
             my_url = getParams(file)
             if my_url:
-                return render_template('final.html', url="/static/image/" + my_url)
+                return render_template('final.html', url= "/static/image/"+my_url,name = app.config['name'])
             else:
                return render_template('index_alert.html', msg='请传入正确的照片');
         else:
