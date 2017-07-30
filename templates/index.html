@@ -6,7 +6,6 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta content="telephone=no" name="format-detection" />
- <script type="text/javascript" src="/static/lib/jQuery/jquery.min.js"></script>
   <title>姚基金与你同在</title>
   <link rel="stylesheet" href="/static/css/reset.css">
   <style type="text/css">
@@ -42,6 +41,11 @@
       text-indent: 20%;
       outline: none;
     }
+    @media (max-width: 414px){
+      #show_name{
+        line-height: 1%;
+      }
+    }
     @media (min-width:415px ) and (max-width:767px){
       .input_name{
         font-size: 20px;
@@ -61,7 +65,7 @@
     .input_name:-ms-input-placeholder{
       color: #EB6100;
     }
-
+    
     .one_key{
       position: absolute;
       left:29.31%;
@@ -100,35 +104,71 @@
       opacity: 0;
     }
 
-    #image01{
-      position: absolute;
-      left: 63%;
-      top: 27.8%;
-      width:9.333%;
-      height:6.1%;
-      border-radius: 42% 42% 100% 100%;
-    }
+
     #show_name{
-      width:100px;
-      height:100px;
-      background-color: #EB6100;
+      height:2.308%;
+      max-width: 25.6%;
+      font-size: 8px;
+      position: absolute;
+      left:37.8%;
+      top:43.5%;
     }
+
 
   </style>
 </head>
 <body>
   <div id="wrapper">
-    <form action="" method=post enctype=multipart/form-data >
+    <form action="/"    method="POST"    enctype="multipart/form-data" >
       <div id="upload" class="upload"></div>
       <input type="file"  id="file" name="file">
-      <br>
-      <input type="submit" id="one_key"  class="one_key">
+      <input type="submit"  disabled="true" id="one_key_submit"  class="one_key">
     </form>
+      <input type="text" id="input_name" class="input_name" maxlength="7" placeholder="输入你的姓名">
+      <div id="show_name"></div>
+ </div>
 
-      <input type="text" id="input_name" class="input_name" placeholder="输入你的姓名">
+<script type="text/javascript">
 
-      <image id="image01" src="" alt="">
+  var img01Dom = document.querySelector("#img01");
 
-  </div>
-</body>
+  var fileDom = document.querySelector("#file");
+  fileDom.onchange = function (ev) {
+  //1.获取文件的对象
+  console.log(ev);
+  var files = ev.target.files;
+  var fileObj = files[0];
+
+  //2.加载解析文件的对象
+
+  var fileReader = new FileReader();
+  //        加载，解析文件 -- 产生一个分线程 readAsDataURL --- 处理图片文件
+  fileReader.readAsDataURL(fileObj);
+  //        加载解析完毕
+  fileReader.onload = function () {
+  //            解析后的文件内容
+  //fileReader.result;
+  //3.显示文件
+//  img01Dom.src = fileReader.result;
+
+  document.getElementById('one_key_submit').disabled = false
+
+  }
+  }
+
+  var inputDom = document.getElementById('input_name')
+  var showDom = document.getElementById('show_name')
+      inputDom.addEventListener('input',function(){
+        showDom.innerHTML = inputDom.value
+      })
+
+  document.getElementById('one_key_submit').addEventListener('click',function () {
+    if(this.disabled == true){
+      alert('请上传照片')
+    }
+  })
+
+</script>
+
+ </body>
 </html>

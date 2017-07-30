@@ -14,9 +14,11 @@
       height:100%;
       max-width: 1024px;
       max-height: 1366px;
+      background-color: white;
     }
     #wrapper{
-      position: relative;
+      position: fixed;
+      z-index: 10000;
       width:100%;
       height:100%;
       background-image: url("/static/image/final.png");
@@ -25,6 +27,7 @@
     }
     #img01{
       position: absolute;
+      z-index: 1000;
       left: 63%;
       top: 26.8%;
       width:9.333%;
@@ -51,21 +54,49 @@
       right:7.5%;
       bottom:11.15%;
     }
+    #name{
+      width:85.15%;
+      height:6.15%;
+      position: absolute;
+      left:17.875%;
+      top:42.13%;
+      font-size: 16px;
+      color: #000;
+      text-indent: 20%;
+    }
+    @media (max-width:415px ){
+      #name{
+        font-size: 12px;
+      }
+    }
+    @media (min-width:415px ) and (max-width:767px){
+      #name{
+        font-size: 20px;
+      }
+    }
+    @media (min-width:768px ){
+      #name{
+        font-size: 26px;
+        top:41.5%;
+      }
+    }
   </style>
 </head>
 <body>
   <div id="wrapper">
-      <div id="show_ava">
-        <img id="img01" src={{url}} alt="">
-      </div>
       <div id="back"></div>
       <div id="save"></div>
+      <div id="name">郑天吉</div>
+  </div>
+  <div id="show_ava">
+    <img id="img01" src="/static/image/avatar_1501384845236.png" alt="">
   </div>
 <script type="text/javascript">
     document.getElementById('back').addEventListener('click',function(){
       window.history.go(-1)
     })
-    document.getElementById("ima01")
+    document.getElementById('#name').innerHTML = '郑天吉'   //后台返回姓名
+
 </script>
 </body>
 </html>
