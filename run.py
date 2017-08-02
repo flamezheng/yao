@@ -30,7 +30,7 @@ def change_avatar():
             resizeImg(ori_img=os.path.join(app.config['UPLOAD_FOLDER'])+"/"+filename, dst_img=filename)
             my_url = getParams(file)
             if my_url:
-                return render_template('final.html', url= "/static/image/"+my_url,name = app.config['name'])
+                return render_template('final.html', url= "/static/image/"+my_url,name = app.config['name']+"")
             else:
                return render_template('index_alert.html', msg='请传入正确的照片');
         else:

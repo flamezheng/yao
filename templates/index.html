@@ -99,7 +99,7 @@
             top: 8.2%;
             width: 28.75%;
             height: 14.286%;
-            background-image: url(/static/image/WechatIMG914.png);
+            background-image: url(/static/image/upload.png);
             background-size: 100% 100%;
         }
 
@@ -128,11 +128,11 @@
 </head>
 <body>
 <div id="wrapper">
-    <form action="/" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
         <div id="upload" class="upload"></div>
         <input type="file" id="file" name="file">
         <input type="submit" disabled="true" id="one_key_submit" class="one_key">
-        <input type="text" id="input_name" name="name" class="input_name" maxlength="7" placeholder="输入你的姓名">
+        <input type="text" id="input_name" class="input_name" name="name" maxlength="7" placeholder="输入你的姓名">
     </form>
     <div id="show_name"></div>
 </div>
@@ -176,6 +176,7 @@
             alert('请上传照片')
         }
     })
+
 
 </script>
 
